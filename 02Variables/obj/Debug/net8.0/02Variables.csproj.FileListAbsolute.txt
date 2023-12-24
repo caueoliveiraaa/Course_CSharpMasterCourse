@@ -1,0 +1,15 @@
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\obj\Debug\net8.0\02Variables.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\obj\Debug\net8.0\02Variables.AssemblyInfoInputs.cache
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\obj\Debug\net8.0\02Variables.AssemblyInfo.cs
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\obj\Debug\net8.0\02Variables.csproj.CoreCompileInputs.cache
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\obj\Debug\net8.0\02Variables.sourcelink.json
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\bin\Debug\net8.0\02Variables.exe
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\bin\Debug\net8.0\02Variables.deps.json
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\bin\Debug\net8.0\02Variables.runtimeconfig.json
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\bin\Debug\net8.0\02Variables.dll
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\bin\Debug\net8.0\02Variables.pdb
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\obj\Debug\net8.0\02Variables.dll
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\obj\Debug\net8.0\refint\02Variables.dll
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\obj\Debug\net8.0\02Variables.pdb
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\obj\Debug\net8.0\02Variables.genruntimeconfig.cache
+C:\Users\Leôncio Cauê\Desktop\CSharp\02Variables\obj\Debug\net8.0\ref\02Variables.dll
