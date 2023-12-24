@@ -12,3 +12,4 @@ C:\Users\Leôncio Cauê\Desktop\CSharp\myApp\obj\Debug\net8.0\refint\myApp.dll
 C:\Users\Leôncio Cauê\Desktop\CSharp\myApp\obj\Debug\net8.0\myApp.pdb
 C:\Users\Leôncio Cauê\Desktop\CSharp\myApp\obj\Debug\net8.0\myApp.genruntimeconfig.cache
 C:\Users\Leôncio Cauê\Desktop\CSharp\myApp\obj\Debug\net8.0\ref\myApp.dll
+C:\Users\Leôncio Cauê\Desktop\CSharp\myApp\obj\Debug\net8.0\myApp.sourcelink.json
