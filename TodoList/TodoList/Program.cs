@@ -20,7 +20,6 @@ namespace TodoList
             Console.WriteLine($"Input {userChoice} is long: {IsLong(userChoice)}");
             Console.WriteLine($"10 + {userChoice.Length} = {Add(10, userChoice.Length)}");
 
-
             if (userChoice == "S")
             {
                 PrintSelectedOption("see all TODOs");
