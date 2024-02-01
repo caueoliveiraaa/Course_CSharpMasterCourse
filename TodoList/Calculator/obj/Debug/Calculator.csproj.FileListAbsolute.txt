@@ -1,7 +1,0 @@
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterClass\TodoList\Calculator\bin\Debug\Calculator.exe.config
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterClass\TodoList\Calculator\bin\Debug\Calculator.exe
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterClass\TodoList\Calculator\bin\Debug\Calculator.pdb
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterClass\TodoList\Calculator\obj\Debug\Calculator.csproj.AssemblyReference.cache
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterClass\TodoList\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterClass\TodoList\Calculator\obj\Debug\Calculator.exe
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterClass\TodoList\Calculator\obj\Debug\Calculator.pdb
