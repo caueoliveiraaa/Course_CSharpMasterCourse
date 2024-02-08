@@ -54,6 +54,11 @@ namespace Calculator
                 return number1 * number2;
             }
 
+            void ShowResult(long num1, long num2, string @operator, long result)
+            {
+                Console.WriteLine($"Result of {num1} {@operator} {num2} is {result}");
+            }
+
             // Program starts here
             Console.WriteLine(">>>>>>> Calculator <<<<<<<");
             long firstNumber = GetFirstNumber();
@@ -62,18 +67,15 @@ namespace Calculator
 
             if (option == "A")
             {
-                long result1 = Add(firstNumber, secondNumber);
-                Console.WriteLine($"Result of {firstNumber} + {secondNumber} = {result1}");
+                ShowResult(firstNumber, secondNumber, "+", Add(firstNumber, secondNumber));
             }
             else if (option == "S")
             {
-                long result2 = Subtract(firstNumber, secondNumber);
-                Console.WriteLine($"Result of {firstNumber} - {secondNumber} = {result2}");
+                ShowResult(firstNumber, secondNumber, "-", Subtract(firstNumber, secondNumber));
             }
             else if (option == "M")
             {
-                long result3 = Multiply(firstNumber, secondNumber);
-                Console.WriteLine($"Result of {firstNumber} x {secondNumber} = {result3}");
+                ShowResult(firstNumber, secondNumber, "x", Multiply(firstNumber, secondNumber));
             }
             else
             {
