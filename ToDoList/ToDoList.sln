@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoList", "ToDoList\ToDoLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{542C4A97-D463-4F27-A889-7A93CA4E24FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ListsAndLoops", "ListsAndLoops\ListsAndLoops.csproj", "{B9181935-25BE-4985-8073-FB603F3A471C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{542C4A97-D463-4F27-A889-7A93CA4E24FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{542C4A97-D463-4F27-A889-7A93CA4E24FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{542C4A97-D463-4F27-A889-7A93CA4E24FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9181935-25BE-4985-8073-FB603F3A471C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9181935-25BE-4985-8073-FB603F3A471C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9181935-25BE-4985-8073-FB603F3A471C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9181935-25BE-4985-8073-FB603F3A471C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
