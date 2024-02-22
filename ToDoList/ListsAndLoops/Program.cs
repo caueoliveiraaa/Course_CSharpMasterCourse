@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ListsAndLoops
 {
@@ -10,7 +6,8 @@ namespace ListsAndLoops
     {
         static void Main(string[] args)
         {
-            var numbers = new [] { 5, 6, 7, 17, 22 };
+            // One dimensional array
+            var numbers = new[] { 5, 6, 7, 17, 22 };
 
             //Console.WriteLine($"Index 0, value {numbers[0]}");
             //Console.WriteLine($"Index 1, value {numbers[1]}");
@@ -26,7 +23,40 @@ namespace ListsAndLoops
             {
                 sum += numbers[i];
             }
+
             Console.WriteLine($"Sum: {sum}");
+
+            // Two-dimensional array
+            char[,] letters = new char[2, 3];
+
+            letters[0, 0] = 'A';
+            letters[0, 1] = 'B';
+            letters[0, 2] = 'C';
+            letters[1, 0] = 'D';
+            letters[1, 1] = 'E';
+            letters[1, 2] = 'F';
+
+            char[,] letters2 = new char[,]
+            {
+                { 'A', 'B', 'C' },
+                { 'D', 'E', 'F'}
+            };
+
+            for (int i = 0; i < letters.GetLength(0); i++)
+            {
+                for (int j = 0; j < letters.GetLength(1); j++)
+                {
+                    Console.WriteLine($"(letters) - Element in row {i} and col {j}: {letters[i, j]}");
+                }
+            }
+
+            for (int i = 0; i < letters2.GetLength(0); i++)
+            {
+                for (int j= 0; j < letters2.GetLength(1); j++)
+                {
+                    Console.WriteLine($"(letters2) - Element in row {i} and col {j}: {letters2[i, j]}");
+                }
+            };
 
             Console.ReadKey();
         }
