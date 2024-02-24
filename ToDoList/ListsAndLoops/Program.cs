@@ -1,10 +1,18 @@
 ﻿using System;
+using System.Collections.Generic; // Import for List
 
 namespace ListsAndLoops
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            Arrays();
+            Lists();
+            Console.ReadKey();
+        }
+
+        static void Arrays()
         {
             // One dimensional array
             var numbers = new[] { 5, 6, 7, 17, 22 };
@@ -26,6 +34,7 @@ namespace ListsAndLoops
 
             Console.WriteLine($"Sum: {sum}");
 
+            Console.WriteLine();
             // Two-dimensional array
             char[,] letters = new char[2, 3];
 
@@ -52,20 +61,71 @@ namespace ListsAndLoops
 
             for (int i = 0; i < letters2.GetLength(0); i++)
             {
-                for (int j= 0; j < letters2.GetLength(1); j++)
+                for (int j = 0; j < letters2.GetLength(1); j++)
                 {
                     Console.WriteLine($"(letters2) - Element in row {i} and col {j}: {letters2[i, j]}");
                 }
             };
 
-            var words = new [] { "one", "two", "three", "four" };
-            foreach(var word in words)
+            Console.WriteLine();
+            //string[] wordsExample = { "one", "two", "three", "four" };
+            var words = new[] { "one", "two", "three", "four" };
+            foreach (var word in words)
+            {
+                Console.WriteLine(word);
+            }
+        }
+
+        static void Lists()
+        {
+            // Working with lists
+            var words = new List<string>
+            {
+                "one",
+                "two"
+            };
+
+            //words.Add("Hello"); // adding new elements
+            Console.WriteLine();
+            Console.WriteLine($"Count of the elements Add {words.Count}");
+
+            foreach (var word in words)
             {
                 Console.WriteLine(word);
             }
 
+            words.Remove("two"); // removing an element
+            Console.WriteLine();
+            Console.WriteLine($"Count of the elements Remove {words.Count}");
 
-            Console.ReadKey();
+            foreach (var word in words)
+            {
+                Console.WriteLine(word);
+            }
+
+            words.RemoveAt(0); // removing an element via index
+            Console.WriteLine();
+            Console.WriteLine($"Count of the elements after RemoveAt {words.Count}");
+
+            var moreWords = new[] { "three", "four", "five" };
+            words.AddRange(moreWords); // adding more than one item at once
+
+            Console.WriteLine();
+            Console.WriteLine($"Count of the elements after AddRange {words.Count}");
+
+            foreach (var word in words)
+            {
+                Console.WriteLine(word);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine($"Index of 'three' {words.IndexOf("three")}"); // getting the index
+            Console.WriteLine($"Index of 'five' {words.IndexOf("five")}");
+            Console.WriteLine($"List contains 'five' {words.Contains("five")}"); // veryfing if element exists
+
+            words.Clear();
+            Console.WriteLine();
+            Console.WriteLine($"Count of the elements after Clear {words.Count}");
         }
     }
 }
