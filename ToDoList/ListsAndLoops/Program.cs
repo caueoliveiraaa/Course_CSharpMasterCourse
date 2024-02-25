@@ -127,5 +127,10 @@ namespace ListsAndLoops
             Console.WriteLine();
             Console.WriteLine($"Count of the elements after Clear {words.Count}");
         }
+        
+        static void OutAndTryParse()
+        {
+
+        }
     }
 }
