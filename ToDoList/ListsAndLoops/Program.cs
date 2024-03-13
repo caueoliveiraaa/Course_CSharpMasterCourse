@@ -7,8 +7,27 @@ namespace ListsAndLoops
     {
         static void Main(string[] args)
         {
+            // Arrays vs Lists
             Arrays();
+            Console.WriteLine("------------------------");
             Lists();
+            Console.WriteLine("------------------------");
+
+            // GetOnlyPositive
+            var numbers = new[] { 10, -18, 5, -7, 13 };
+            int nonPositive;
+            var onlyPositives = GetOnlyPositive(numbers, out nonPositive);
+            foreach (var positiveNumber in onlyPositives)
+            {
+                Console.WriteLine(positiveNumber);
+            }
+            Console.WriteLine($"Amount of non-positives is {nonPositive}");
+
+            // TryParse
+            Console.WriteLine("------------------------");
+            UsingTryParse();
+
+            Console.WriteLine("Press any key to end the program!");
             Console.ReadKey();
         }
 
@@ -128,9 +147,40 @@ namespace ListsAndLoops
             Console.WriteLine($"Count of the elements after Clear {words.Count}");
         }
         
-        static void OutAndTryParse()
-        {
+        static List<int> GetOnlyPositive(int[] numbers, out int nonPositive)
+        {   
+            var result = new List<int>();
+            nonPositive = 0;
 
+            foreach (var number in numbers)
+            {
+                if (number > 0)
+                    result.Add(number);
+                else
+                    nonPositive++;
+            }
+
+            return result;
+        }
+          
+        static void UsingTryParse()
+        {
+            bool inputIsNumber;
+            do
+            {
+                Console.WriteLine("Enter a number: ");
+                var userInput = Console.ReadLine();
+
+                inputIsNumber = int.TryParse(userInput, out int number);
+                if (inputIsNumber)
+                {
+                    Console.WriteLine("Parsing worked. Number: " + number);
+                }
+                else
+                {
+                    Console.WriteLine("Parsing did not work. Try again");
+                }
+            } while (!inputIsNumber);
         }
     }
 }
