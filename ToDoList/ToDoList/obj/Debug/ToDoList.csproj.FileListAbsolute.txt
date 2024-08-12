@@ -1,7 +1,0 @@
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterCourse\ToDoList\ToDoList\bin\Debug\ToDoList.exe.config
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterCourse\ToDoList\ToDoList\bin\Debug\ToDoList.exe
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterCourse\ToDoList\ToDoList\bin\Debug\ToDoList.pdb
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterCourse\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.AssemblyReference.cache
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterCourse\ToDoList\ToDoList\obj\Debug\ToDoList.csproj.CoreCompileInputs.cache
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterCourse\ToDoList\ToDoList\obj\Debug\ToDoList.exe
-C:\Users\Leôncio Cauê\Desktop\CSharpMasterCourse\ToDoList\ToDoList\obj\Debug\ToDoList.pdb
