@@ -6,7 +6,7 @@ while (true) {
     }
     catch (Exception error) {
         if (error is ArgumentNullException)
-            Console.WriteLine("Argument option is null!");
+            Console.WriteLine($"An error with null values occured: {error.Message}");
         else if (error is ArgumentException)
             Console.WriteLine($"The following error occured during runtime: {error.Message}");
         else 

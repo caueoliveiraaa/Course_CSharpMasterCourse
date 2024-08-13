@@ -9,29 +9,41 @@ public static class ListManager {
         "display", "insert", "remove", "edit"
     };
 
-    public static void ProcessNewTask(string option, string task) {
-        ValidateData(option, task);
-
-        if (option == "display") {}
-        else if (option == "insert") {}
-        else if (option == "remove") {}
-        else if (option == "edit") {}
-    }
-
-    private static void ValidateData(string option, string task) {
+    public static void ProcessNewTask(string option, string task, string? newTask = null) {
+        ValidateOption(option);
         ValidateTask(task);
 
-        if (option == null || task == null)
-            throw new ArgumentNullException("Arguments cannot is null.");
+        if (option == "display")
+            DisplayTasks();
+        else if (option == "insert")
+            AddTask(task);
+        else if (option == "remove")
+            RemoveTask(task);
+        else if (option == "edit" && newTask != null)
+            UpdateTask(task, newTask);
+    }
+
+    private static void ValidateOption(string option) {
+        if (option == null)
+            throw new ArgumentNullException("Options cannot be null.");
         else if (!validOptions.Contains(option))
             throw new ArgumentException("Invalid option.");
     }
 
     public static void ValidateTask(string task) {
-        if (task.Length <= 4)
-            throw new ArgumentException("Tasks need to have more than 3 letters!");
+        if (task == null)
+            throw new ArgumentNullException("Tasks cannot be null.");
+        else if (task.Length <= 4)
+            throw new ArgumentException("Tasks need to have more than 3 letters.");
         else if (!Regex.IsMatch(task, @"\d"))
-            throw new ArgumentException("There can be no numbers in the tasks!");
+            throw new ArgumentException("There can be no numbers in the tasks.");
+        else if (tasks.IndexOf(task) != -1)
+            throw new ArgumentException($"Task {task} already exists.");
+    }
+
+    public static void AuthenticateTask(string task) {
+        if (tasks.IndexOf(task) == -1)
+            throw new ArgumentException($"No task named {task} was found.");        
     }
 
     public static void AddTask(string task) {
@@ -39,19 +51,17 @@ public static class ListManager {
     }
     
     public static void RemoveTask(string task) {
+        AuthenticateTask(task);
         tasks.Remove(task);
     }
 
     public static void UpdateTask(string oldTask, string newTask) {
-        int index = tasks.IndexOf(oldTask);
-        if (index == -1)
-            throw new ArgumentException($"No task named {oldTask} was found.");
-
-        AddTask(newTask);
+        AuthenticateTask(oldTask);
+        tasks[tasks.IndexOf(oldTask)] = newTask;
     }
 
-    public static void ShowTasks() {
+    public static void DisplayTasks() {
         for (int i = 0; i < tasks.Count; i++)
-            Console.WriteLine($"Item {i+1}: {tasks[i]}");
+            Console.WriteLine($"Task {i+1}: {tasks[i]}");
     }
 }
