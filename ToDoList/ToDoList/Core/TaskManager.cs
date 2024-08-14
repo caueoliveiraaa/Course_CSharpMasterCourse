@@ -5,10 +5,6 @@ public static class TaskManager {
 
     private static List<string> tasks = new List<string>();
     
-    private static List<string> validOptions = new List<string>() {
-        "display", "insert", "remove", "edit"
-    };
-
     public static void ProcessNewTask(string option, string task, string? newTask = null) {
         TaskValidator.ValidateOption(option);
         TaskValidator.ValidateTask(task, tasks);

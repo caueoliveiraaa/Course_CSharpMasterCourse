@@ -2,7 +2,7 @@
 
 while (true) {
     try {
-        
+        TaskRunner.RunProgram();
     }
     catch (Exception error) {
         if (error is ArgumentNullException)
