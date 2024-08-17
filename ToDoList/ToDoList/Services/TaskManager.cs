@@ -2,7 +2,8 @@ using System.Text.RegularExpressions;
 
 namespace Course_CSharpMasterCourse.ToDoList.ToDoList;
 
-public class TaskManager {
+public class TaskManager : ITaskManager
+{
     /// <summary>
     /// Handles the main exceptions that can occur while running the program.
     /// </summary>
@@ -11,13 +12,11 @@ public class TaskManager {
     /// <summary>
     /// Handles the main exceptions that can occur while running the program.
     /// </summary>
-    public TaskValidator validator = new TaskValidator();
+    private TaskValidator validator = new TaskValidator();
 
     public void ProcessNewTask(string option, string? task, string? newTask = null)
     {
         validator.ValidateOption(option);
-
-        option = option.ToLower();
 
         if (option == "display" || option == "1")
         {
@@ -47,6 +46,9 @@ public class TaskManager {
                 Console.WriteLine($"{i + 1} - {validator.validOptions[i]}");
     }
 
+    /// <summary>
+    /// Adds a new task to the tasks property.
+    /// </summary>
     private void AddTask(string task)
     {
         tasks.Add(task);
@@ -54,6 +56,9 @@ public class TaskManager {
         Console.WriteLine("\n");
     }
     
+    /// <summary>
+    /// Removes an existing task from the tasks property.
+    /// </summary>
     private void RemoveTask(string task)
     {
         validator.AuthenticateTask(task, tasks);
@@ -62,6 +67,9 @@ public class TaskManager {
         Console.WriteLine("\n");
     }
 
+    /// <summary>
+    /// Updates the value of a task.
+    /// </summary>
     private void UpdateTask(string oldTask, string newTask)
     {
         validator.AuthenticateTask(oldTask, tasks);
@@ -70,6 +78,9 @@ public class TaskManager {
         Console.WriteLine("\n");
     }
 
+    /// <summary>
+    /// Displays all the tasks that have been already added.
+    /// </summary>
     private void DisplayTasks()
     {
         if (tasks.Count > 0)

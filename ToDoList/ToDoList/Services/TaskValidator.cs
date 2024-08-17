@@ -4,6 +4,9 @@ namespace Course_CSharpMasterCourse.ToDoList.ToDoList;
 
 public class TaskValidator : ITaskValidator
 {
+    /// <summary>
+    /// All the valid options for the operations available in the program.
+    /// </summary>
     public List<string> validOptions = new List<string>()
     {
         "display", "insert", "remove", "edit", "1", "2", "3", "4"

@@ -2,7 +2,10 @@ namespace Course_CSharpMasterCourse.ToDoList.ToDoList;
 
 public class TaskRunner : ITaskRunner
 {
-    public TaskManager manager = new TaskManager();
+    /// <summary>
+    /// Contains an intance of the class TaskManager to manipulate tasks.
+    /// </summary>
+    private TaskManager manager = new TaskManager();
 
     public void RunProgram()
     {
@@ -23,7 +26,9 @@ public class TaskRunner : ITaskRunner
                     continue;
                 }
 
+                option = option.ToLower();
                 string? task = null;
+
                 if (option != "display" && option != "1")
                 {
                     Console.WriteLine("Type in the task to be stored: ");
