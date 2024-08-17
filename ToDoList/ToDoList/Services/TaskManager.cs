@@ -2,7 +2,6 @@
 namespace Course_CSharpMasterCourse.ToDoList.ToDoList;
 
 public static class TaskManager {
-
     private static List<string> tasks = new List<string>();
     
     public static void ProcessNewTask(string option, string task, string? newTask = null)
@@ -10,17 +9,19 @@ public static class TaskManager {
         TaskValidator.ValidateOption(option);
         TaskValidator.ValidateTask(task, tasks);
 
-        if (option == "edit" && newTask != null)
-            UpdateTask(task, newTask);
-        else if (option == "display")
+        option = option.ToLower();
+
+        if (option == "display" || option == "1")
             DisplayTasks();
-        else if (option == "insert")
+        else if (option == "insert" || option == "2")
             AddTask(task);
-        else if (option == "remove")
+        else if (option == "remove" || option == "3")
             RemoveTask(task);
+        else if ((option == "edit" || option == "4") && newTask != null)
+            UpdateTask(task, newTask);
     }
 
-    public static void AuthenticateTask(string task)
+    private static void AuthenticateTask(string task)
     {
         if (tasks.IndexOf(task) == -1)
             throw new ArgumentException($"No task named {task} was found.");        
@@ -48,5 +49,4 @@ public static class TaskManager {
         for (int i = 0; i < tasks.Count; i++)
             Console.WriteLine($"Task {i+1}: {tasks[i]}");
     }
-    
 }
