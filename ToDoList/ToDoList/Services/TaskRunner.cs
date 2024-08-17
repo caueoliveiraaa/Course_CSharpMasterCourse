@@ -1,14 +1,20 @@
 namespace Course_CSharpMasterCourse.ToDoList.ToDoList;
 
-public static class TaskRunner
+public class TaskRunner : ITaskRunner
 {
-    public static void RunProgram()
+    public TaskManager manager = new TaskManager();
+
+    public void RunProgram()
     {
+        Console.Clear();
+        SetUpKeyboardInterrunption();
+        Console.WriteLine("The program has started...");
+
         do
         {
             try 
             {
-                TaskScreen.ShowOptions();
+                manager.DisplayOptions();
                 string? option = Console.ReadLine();
 
                 if (option == null)
@@ -37,7 +43,7 @@ public static class TaskRunner
                     newTask = Console.ReadLine();
                 }
 
-                TaskManager.ProcessNewTask(option, task, newTask);
+                manager.ProcessNewTask(option, task, newTask);
             }
             catch (Exception error)
             {
@@ -46,13 +52,35 @@ public static class TaskRunner
         } while (true);
     }
 
-    private static void HandleException(Exception error)
+    /// <summary>
+    /// Handles the main exceptions that can occur while running the program.
+    /// </summary>
+    /// <param name="error"> Exception to be interpreted by the method. </param>
+    private void HandleException(Exception error)
     {
         if (error is ArgumentNullException)
             Console.WriteLine($"An error with null values occured: {error.Message}");
         else if (error is ArgumentException)
             Console.WriteLine($"The following error occured during runtime: {error.Message}");
-        else 
+        else
             Console.WriteLine($"An unexpected error occured: {error.Message}");
+    }
+
+    /// <summary>
+    /// Serves as an exit point for the program.
+    /// </summary>
+    /// <param></param>
+    private void OnExit(object? sender, ConsoleCancelEventArgs args)
+    {
+        Console.WriteLine("Keyboard interruption detected. Exiting program...");
+        Environment.Exit(0);
+    }
+
+    /// <summary>
+    /// Sets up the keyboard interruption treatment.
+    /// </summary>
+    private void SetUpKeyboardInterrunption()
+    {
+        Console.CancelKeyPress += new ConsoleCancelEventHandler(OnExit);
     }
 }

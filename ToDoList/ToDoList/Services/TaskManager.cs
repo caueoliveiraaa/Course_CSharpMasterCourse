@@ -1,12 +1,21 @@
+using System.Text.RegularExpressions;
 
 namespace Course_CSharpMasterCourse.ToDoList.ToDoList;
 
-public static class TaskManager {
-    private static List<string> tasks = new List<string>();
-    
-    public static void ProcessNewTask(string option, string? task, string? newTask = null)
+public class TaskManager {
+    /// <summary>
+    /// Handles the main exceptions that can occur while running the program.
+    /// </summary>
+    private List<string> tasks = new List<string>();
+
+    /// <summary>
+    /// Handles the main exceptions that can occur while running the program.
+    /// </summary>
+    public TaskValidator validator = new TaskValidator();
+
+    public void ProcessNewTask(string option, string? task, string? newTask = null)
     {
-        TaskValidator.ValidateOption(option);
+        validator.ValidateOption(option);
 
         option = option.ToLower();
 
@@ -16,12 +25,12 @@ public static class TaskManager {
         }
         else if ((option == "insert" || option == "2") && task != null)
         {
-            TaskValidator.ValidateTask(task, tasks);
+            validator.ValidateTask(task, tasks);
             AddTask(task);
         }
         else if ((option == "remove" || option == "3") && task != null)
         {
-            TaskValidator.ValidateTask(task, tasks);
+            validator.ValidateTask(task, tasks);
             RemoveTask(task);
         }
         else if ((option == "edit" || option == "4") && newTask != null && task != null)
@@ -30,36 +39,50 @@ public static class TaskManager {
         }
     }
 
-    private static void AuthenticateTask(string task)
+    public void DisplayOptions()
     {
-        if (tasks.IndexOf(task) == -1)
-            throw new ArgumentException($"No task named {task} was found.");        
+        Console.WriteLine("Choose one of the options bellow: ");
+        for (int i = 0; i < validator.validOptions.Count; i++)
+            if (!Regex.IsMatch(validator.validOptions[i], @"\d"))
+                Console.WriteLine($"{i + 1} - {validator.validOptions[i]}");
     }
 
-    public static void AddTask(string task)
+    private void AddTask(string task)
     {
         tasks.Add(task);
-        Console.WriteLine($"Task {task} inserted successfully.");
+        Console.WriteLine($"Task {task} has been inserted.");
+        Console.WriteLine("\n");
     }
     
-    public static void RemoveTask(string task)
+    private void RemoveTask(string task)
     {
-        AuthenticateTask(task);
+        validator.AuthenticateTask(task, tasks);
         tasks.Remove(task);
-        Console.WriteLine($"Task {task} removed successfully.");
+        Console.WriteLine($"Task {task} has been removed.");
+        Console.WriteLine("\n");
     }
 
-    public static void UpdateTask(string oldTask, string newTask)
+    private void UpdateTask(string oldTask, string newTask)
     {
-        AuthenticateTask(oldTask);
+        validator.AuthenticateTask(oldTask, tasks);
         tasks[tasks.IndexOf(oldTask)] = newTask;
-        Console.WriteLine($"Task {oldTask} updated to {newTask} successfully.");
+        Console.WriteLine($"Task {oldTask} has been updated to {newTask}.");
+        Console.WriteLine("\n");
     }
 
-    public static void DisplayTasks()
+    private void DisplayTasks()
     {
-        Console.WriteLine("All tasks:");
-        for (int i = 0; i < tasks.Count; i++)
-            Console.WriteLine($"Task {i+1}: {tasks[i]}");
+        if (tasks.Count > 0)
+        {
+            Console.WriteLine("All tasks:");
+            for (int i = 0; i < tasks.Count; i++)
+                Console.WriteLine($"Task {i+1}: {tasks[i]}");
+        }
+        else
+        {
+            Console.WriteLine("There are no tasks yet.");
+        }
+
+        Console.WriteLine("\n");
     }
 }
