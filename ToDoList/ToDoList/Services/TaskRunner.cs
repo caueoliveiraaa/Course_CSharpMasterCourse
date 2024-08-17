@@ -11,31 +11,39 @@ public static class TaskRunner
                 TaskScreen.ShowOptions();
                 string? option = Console.ReadLine();
 
-                if (!InputIsNotNull(option))
+                if (option == null)
                 {
                     Console.WriteLine("Option cannot be null!");
                     continue;
                 }
 
-                Console.WriteLine("Type in the task to be stored: ");
-                string? task = Console.ReadLine();
-
-                if (!InputIsNotNull(task))
+                string? task = null;
+                if (option != "display" && option != "1")
                 {
-                    Console.WriteLine("Task cannot be null!");
-                    continue;
+                    Console.WriteLine("Type in the task to be stored: ");
+                    task = Console.ReadLine();
+
+                    if (task == null)
+                    {
+                        Console.WriteLine("Task cannot be null.");
+                        continue;
+                    }
                 }
+
+                string? newTask = null;
+                if (option == "edit" || option == "4")
+                {
+                    Console.WriteLine("Insert new task: ");
+                    newTask = Console.ReadLine();
+                }
+
+                TaskManager.ProcessNewTask(option, task, newTask);
             }
             catch (Exception error)
             {
                 HandleException(error);
             }
         } while (true);
-    }
-
-    private static bool InputIsNotNull(string? text)
-    {
-        return text != null;
     }
 
     private static void HandleException(Exception error)
