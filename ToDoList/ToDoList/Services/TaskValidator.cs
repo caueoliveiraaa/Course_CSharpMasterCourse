@@ -9,28 +9,25 @@ public class TaskValidator : ITaskValidator
     /// </summary>
     public List<string> validOptions = new List<string>()
     {
-        "display", "insert", "remove", "edit", "1", "2", "3", "4"
+        "display", "insert", "remove", "edit", "clean",
+        "1", "2", "3", "4", "5"
     };
+
+    public bool AuthenticateTask(string task, List<string> tasks) => tasks.IndexOf(task) == -1;
 
     public void ValidateOption(string option)
     {
         if (!validOptions.Contains(option))
-            throw new ArgumentException("Invalid option.");
+            throw new ArgumentException("An invalid option was detected.");
     }
 
-    public void AuthenticateTask(string task, List<string> tasks)
+    public void ValidateTask(string? task, List<string> tasks)
     {
-        if (tasks.IndexOf(task) == -1)
-            throw new ArgumentException($"No task named {task} was found.");        
-    }
-
-    public void ValidateTask(string task, List<string> tasks)
-    {
-        if (task.Length <= 4)
-            throw new ArgumentException("Tasks need to have more than 3 letters.");
+        if (task == null)
+            throw new ArgumentException("There cannot be null tasks.");
+        else if (task.Length <= 4)
+            throw new ArgumentException("Tasks cannot have less than 5 letters.");
         else if (Regex.IsMatch(task, @"\d"))
-            throw new ArgumentException("There can be no numbers in the tasks.");
-        else if (tasks.IndexOf(task) != -1)
-            throw new ArgumentException($"Task {task} already exists.");
+            throw new ArgumentException("There cannot be numbers in the tasks.");
     }
 }

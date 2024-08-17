@@ -18,6 +18,7 @@ public class TaskRunner : ITaskRunner
             try 
             {
                 manager.DisplayOptions();
+                Console.Write(">> ");
                 string? option = Console.ReadLine();
 
                 if (option == null)
@@ -29,9 +30,17 @@ public class TaskRunner : ITaskRunner
                 option = option.ToLower();
                 string? task = null;
 
-                if (option != "display" && option != "1")
+                if (option != "display" && option != "1"
+                  && option != "clean" && option != "5")
                 {
-                    Console.WriteLine("Type in the task to be stored: ");
+                    if (option == "insert" || option == "2")
+                        Console.Write("Type in the task to be stored:\n");
+                    else if (option == "remove" || option == "3")
+                        Console.Write("Type in the task to be removed:\n");
+                    else if (option == "edit" || option == "4")
+                        Console.Write("Type in the task to be updated:\n");
+
+                    Console.Write(">>: ");
                     task = Console.ReadLine();
 
                     if (task == null)
@@ -42,6 +51,7 @@ public class TaskRunner : ITaskRunner
                 }
 
                 string? newTask = null;
+                
                 if (option == "edit" || option == "4")
                 {
                     Console.WriteLine("Insert new task: ");
@@ -75,17 +85,10 @@ public class TaskRunner : ITaskRunner
     /// Serves as an exit point for the program.
     /// </summary>
     /// <param></param>
-    private void OnExit(object? sender, ConsoleCancelEventArgs args)
-    {
-        Console.WriteLine("Keyboard interruption detected. Exiting program...");
-        Environment.Exit(0);
-    }
+    private void OnExit(object? sender, ConsoleCancelEventArgs args) => Environment.Exit(0);
 
     /// <summary>
     /// Sets up the keyboard interruption treatment.
     /// </summary>
-    private void SetUpKeyboardInterrunption()
-    {
-        Console.CancelKeyPress += new ConsoleCancelEventHandler(OnExit);
-    }
+    private void SetUpKeyboardInterrunption() => Console.CancelKeyPress += new ConsoleCancelEventHandler(OnExit);
 }

@@ -2,9 +2,10 @@
 
 try
 {
-    TaskRunner.RunProgram();
+    TaskRunner mainTask = new TaskRunner();
+    mainTask.RunProgram();
 }
 catch (Exception error)
 {
-    Console.WriteLine($"An error occured that has crashed the program: {error.Message}");
+    Console.WriteLine($"An error occured, crashing the app: {error.Message}");
 }

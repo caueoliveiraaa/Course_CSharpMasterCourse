@@ -12,12 +12,13 @@ public interface ITaskValidator
     /// </summary> 
     /// <param name="task"> Task to be authenticated. </param>
     /// <param name="tasks"> List of existing tasks. </param>
-    void AuthenticateTask(string task, List<string> tasks);
+    /// <return> Returns true if the task already exists. </return>
+    bool AuthenticateTask(string task, List<string> tasks);
 
     /// <summary>
     ///  Validates the task input by the user.
     /// </summary>
     /// <param name="task"> Task to be validated. </param>
     /// <param name="tasks"> List of existing tasks. </param>
-    void ValidateTask(string task, List<string> tasks);
+    void ValidateTask(string? task, List<string> tasks);
 }

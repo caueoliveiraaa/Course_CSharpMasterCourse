@@ -19,22 +19,19 @@ public class TaskManager : ITaskManager
         validator.ValidateOption(option);
 
         if (option == "display" || option == "1")
-        {
             DisplayTasks();
-        }
-        else if ((option == "insert" || option == "2") && task != null)
+        else if (option == "clean" || option == "5")
+            Console.Clear();
+        else
         {
             validator.ValidateTask(task, tasks);
-            AddTask(task);
-        }
-        else if ((option == "remove" || option == "3") && task != null)
-        {
-            validator.ValidateTask(task, tasks);
-            RemoveTask(task);
-        }
-        else if ((option == "edit" || option == "4") && newTask != null && task != null)
-        {
-            UpdateTask(task, newTask);
+
+            if (option == "insert" || option == "2")
+                AddTask(task);
+            else if (option == "remove" || option == "3")
+                RemoveTask(task);
+            else if ((option == "edit" || option == "4") && newTask != null)
+                UpdateTask(task, newTask);
         }
     }
 
@@ -52,7 +49,7 @@ public class TaskManager : ITaskManager
     private void AddTask(string task)
     {
         tasks.Add(task);
-        Console.WriteLine($"Task {task} has been inserted.");
+        Console.WriteLine($"Task '{task}' has been inserted.");
         Console.WriteLine("\n");
     }
     
@@ -61,33 +58,48 @@ public class TaskManager : ITaskManager
     /// </summary>
     private void RemoveTask(string task)
     {
-        validator.AuthenticateTask(task, tasks);
-        tasks.Remove(task);
-        Console.WriteLine($"Task {task} has been removed.");
-        Console.WriteLine("\n");
+        if (validator.AuthenticateTask(task, tasks))
+        {
+            tasks.Remove(task);
+            Console.WriteLine($"Task '{task}' has been removed.");
+            Console.WriteLine("\n");
+        }
+        else 
+        {
+            Console.WriteLine($"Task '{task}' has not been found.");
+            Console.WriteLine("\n");
+        }
     }
 
     /// <summary>
-    /// Updates the value of a task.
+    /// Updates the value of an existing task.
     /// </summary>
     private void UpdateTask(string oldTask, string newTask)
     {
-        validator.AuthenticateTask(oldTask, tasks);
-        tasks[tasks.IndexOf(oldTask)] = newTask;
-        Console.WriteLine($"Task {oldTask} has been updated to {newTask}.");
-        Console.WriteLine("\n");
+        if (validator.AuthenticateTask(oldTask, tasks))
+        {
+            tasks[tasks.IndexOf(oldTask)] = newTask;
+            Console.WriteLine($"Task '{oldTask}' has been updated to '{newTask}'.");
+            Console.WriteLine("\n");
+        }
+        else
+        {
+            Console.WriteLine($"Task '{oldTask}' has not been found.");
+            Console.WriteLine("\n");
+        }
     }
 
     /// <summary>
-    /// Displays all the tasks that have been already added.
+    /// Displays all the tasks that have been already added if there are any.
     /// </summary>
     private void DisplayTasks()
     {
         if (tasks.Count > 0)
         {
+            Console.Clear();
             Console.WriteLine("All tasks:");
             for (int i = 0; i < tasks.Count; i++)
-                Console.WriteLine($"Task {i+1}: {tasks[i]}");
+                Console.WriteLine($"{i+1} - {tasks[i]}");
         }
         else
         {
