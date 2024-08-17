@@ -2,7 +2,8 @@ using System.Text.RegularExpressions;
 
 namespace Course_CSharpMasterCourse.ToDoList.ToDoList;
 
-public class TaskValidator {
+public class TaskValidator : ITaskValidator
+{
     public List<string> validOptions = new List<string>()
     {
         "display", "insert", "remove", "edit", "1", "2", "3", "4"
