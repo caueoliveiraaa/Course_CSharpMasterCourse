@@ -14,7 +14,7 @@ public class TaskManager : ITaskManager
     /// </summary>
     private TaskValidator _validator = new TaskValidator();
 
-    public void ProcessNewTask(string option, string? task, string? newTask = null)
+    public void ProcessNewTask(string option, string task, string? newTask = null)
     {
         _validator.ValidateOption(option);
 
