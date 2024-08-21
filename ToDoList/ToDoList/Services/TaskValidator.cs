@@ -7,7 +7,7 @@ public class TaskValidator : ITaskValidator
     /// <summary>
     /// All the valid options for the operations available in the program.
     /// </summary>
-    public List<string> validOptions = new List<string>()
+    public List<string> _validOptions = new List<string>()
     {
         "display", "insert", "remove", "edit", "clean",
         "1", "2", "3", "4", "5"
@@ -17,7 +17,7 @@ public class TaskValidator : ITaskValidator
 
     public void ValidateOption(string option)
     {
-        if (!validOptions.Contains(option))
+        if (!_validOptions.Contains(option))
             throw new ArgumentException("An invalid option was detected.");
     }
 

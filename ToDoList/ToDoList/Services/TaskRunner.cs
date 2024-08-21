@@ -5,66 +5,105 @@ public class TaskRunner : ITaskRunner
     /// <summary>
     /// Contains an intance of the class TaskManager to manipulate tasks.
     /// </summary>
-    private TaskManager manager = new TaskManager();
+    private TaskManager _manager = new TaskManager();
+
+    /// <summary>
+    /// Controls whether the program keeps running.
+    /// </summary>
+    private bool _keepRunning = true;
 
     public void RunProgram()
     {
-        Console.Clear();
         SetUpKeyboardInterrunption();
+        Console.Clear();
         Console.WriteLine("The program has started...");
 
         do
         {
             try 
             {
-                manager.DisplayOptions();
-                Console.Write(">> ");
-                string? option = Console.ReadLine();
+                _manager.DisplayOptions();
 
-                if (option == null)
-                {
-                    Console.WriteLine("Option cannot be null!");
-                    continue;
-                }
-
-                option = option.ToLower();
-                string? task = null;
-
-                if (option != "display" && option != "1"
-                  && option != "clean" && option != "5")
-                {
-                    if (option == "insert" || option == "2")
-                        Console.Write("Type in the task to be stored:\n");
-                    else if (option == "remove" || option == "3")
-                        Console.Write("Type in the task to be removed:\n");
-                    else if (option == "edit" || option == "4")
-                        Console.Write("Type in the task to be updated:\n");
-
-                    Console.Write(">>: ");
-                    task = Console.ReadLine();
-
-                    if (task == null)
-                    {
-                        Console.WriteLine("Task cannot be null.");
-                        continue;
-                    }
-                }
-
+                string option = GetOption();
+                string task =  GetTask(option);
                 string? newTask = null;
                 
                 if (option == "edit" || option == "4")
-                {
-                    Console.WriteLine("Insert new task: ");
-                    newTask = Console.ReadLine();
-                }
+                    newTask = GetNewTask();
 
-                manager.ProcessNewTask(option, task, newTask);
+                _manager.ProcessNewTask(option, task, newTask);
             }
             catch (Exception error)
             {
                 HandleException(error);
             }
-        } while (true);
+        } while (_keepRunning);
+    }
+
+    /// <summary>
+    /// Reads the new input task from the user.
+    /// </summary>
+    /// <returns> New task typed in by the user. </returns>
+    private string GetNewTask()
+    {
+        Console.WriteLine("Insert new task: ");
+        Console.Write(">> ");
+        string? newTask = Console.ReadLine();
+
+        if (newTask == null)
+            throw new ArgumentException("New task cannot be null.");
+
+        return newTask;
+    }
+
+    /// <summary>
+    /// Reads the input task from the user.
+    /// </summary>
+    /// <param name="option"> Option typed in by the user. </param>
+    /// <returns> Task typed in by the user. </returns>
+    private string GetTask(string option)
+    {
+        InformTaskOperation(option);
+        Console.Write(">> ");
+        string? task = Console.ReadLine();
+
+        if (task == null)
+            throw new ArgumentException("Task cannot be null.");
+
+        return task;
+    }
+
+    /// <summary>
+    /// Informs the operation to be executed.
+    /// </summary>
+    /// <param name="option"> Option typed in by the user. </param>
+    private void InformTaskOperation(string option)
+    {
+        if (option != "display" && option != "1"
+            && option != "clean" && option != "5")
+        {
+            if (option == "insert" || option == "2")
+                Console.Write("Type in the task to be stored:\n");
+            else if (option == "remove" || option == "3")
+                Console.Write("Type in the task to be removed:\n");
+            else if (option == "edit" || option == "4")
+                Console.Write("Type in the task to be updated:\n");
+        }
+    }
+
+    /// <summary>
+    /// Reads the input option from the user.
+    /// </summary>
+    /// <returns> Option typed in by the user. </returns>
+    private string GetOption()
+    {
+        Console.Write(">> ");
+        string? option = Console.ReadLine();
+
+        if (option == null)
+            throw new ArgumentException("Option cannot be null!");
+
+        return option.ToLower();
     }
 
     /// <summary>

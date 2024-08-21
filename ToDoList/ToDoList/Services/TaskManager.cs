@@ -7,16 +7,16 @@ public class TaskManager : ITaskManager
     /// <summary>
     /// Handles the main exceptions that can occur while running the program.
     /// </summary>
-    private List<string> tasks = new List<string>();
+    private List<string> _tasks = new List<string>();
 
     /// <summary>
     /// Handles the main exceptions that can occur while running the program.
     /// </summary>
-    private TaskValidator validator = new TaskValidator();
+    private TaskValidator _validator = new TaskValidator();
 
     public void ProcessNewTask(string option, string? task, string? newTask = null)
     {
-        validator.ValidateOption(option);
+        _validator.ValidateOption(option);
 
         if (option == "display" || option == "1")
             DisplayTasks();
@@ -24,7 +24,7 @@ public class TaskManager : ITaskManager
             Console.Clear();
         else
         {
-            validator.ValidateTask(task, tasks);
+            _validator.ValidateTask(task, _tasks);
 
             if (option == "insert" || option == "2")
                 AddTask(task);
@@ -38,9 +38,9 @@ public class TaskManager : ITaskManager
     public void DisplayOptions()
     {
         Console.WriteLine("Choose one of the options bellow: ");
-        for (int i = 0; i < validator.validOptions.Count; i++)
-            if (!Regex.IsMatch(validator.validOptions[i], @"\d"))
-                Console.WriteLine($"{i + 1} - {validator.validOptions[i]}");
+        for (int i = 0; i < _validator._validOptions.Count; i++)
+            if (!Regex.IsMatch(_validator._validOptions[i], @"\d"))
+                Console.WriteLine($"{i + 1} - {_validator._validOptions[i]}");
     }
 
     /// <summary>
@@ -48,7 +48,7 @@ public class TaskManager : ITaskManager
     /// </summary>
     private void AddTask(string task)
     {
-        tasks.Add(task);
+        _tasks.Add(task);
         Console.WriteLine($"Task '{task}' has been inserted.");
         Console.WriteLine("\n");
     }
@@ -58,9 +58,9 @@ public class TaskManager : ITaskManager
     /// </summary>
     private void RemoveTask(string task)
     {
-        if (validator.AuthenticateTask(task, tasks))
+        if (_validator.AuthenticateTask(task, _tasks))
         {
-            tasks.Remove(task);
+            _tasks.Remove(task);
             Console.WriteLine($"Task '{task}' has been removed.");
             Console.WriteLine("\n");
         }
@@ -76,9 +76,9 @@ public class TaskManager : ITaskManager
     /// </summary>
     private void UpdateTask(string oldTask, string newTask)
     {
-        if (validator.AuthenticateTask(oldTask, tasks))
+        if (_validator.AuthenticateTask(oldTask, _tasks))
         {
-            tasks[tasks.IndexOf(oldTask)] = newTask;
+            _tasks[_tasks.IndexOf(oldTask)] = newTask;
             Console.WriteLine($"Task '{oldTask}' has been updated to '{newTask}'.");
             Console.WriteLine("\n");
         }
@@ -94,12 +94,12 @@ public class TaskManager : ITaskManager
     /// </summary>
     private void DisplayTasks()
     {
-        if (tasks.Count > 0)
+        if (_tasks.Count > 0)
         {
             Console.Clear();
             Console.WriteLine("All tasks:");
-            for (int i = 0; i < tasks.Count; i++)
-                Console.WriteLine($"{i+1} - {tasks[i]}");
+            for (int i = 0; i < _tasks.Count; i++)
+                Console.WriteLine($"{i+1} - {_tasks[i]}");
         }
         else
         {
