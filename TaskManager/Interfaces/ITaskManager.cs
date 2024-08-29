@@ -1,4 +1,5 @@
-namespace Course_CSharpMasterCourse.ToDoList.ToDoList;
+namespace Course_CSharpMasterCourse.TaskManager;
+
 
 public interface ITaskManager
 {

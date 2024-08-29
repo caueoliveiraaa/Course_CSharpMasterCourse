@@ -1,6 +1,6 @@
 using System.Text.RegularExpressions;
 
-namespace Course_CSharpMasterCourse.ToDoList.ToDoList;
+namespace Course_CSharpMasterCourse.TaskManager;
 
 public class TaskManager : ITaskManager
 {

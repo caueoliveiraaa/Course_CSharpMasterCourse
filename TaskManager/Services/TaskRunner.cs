@@ -1,4 +1,4 @@
-namespace Course_CSharpMasterCourse.ToDoList.ToDoList;
+namespace Course_CSharpMasterCourse.TaskManager;
 
 public class TaskRunner : ITaskRunner
 {
