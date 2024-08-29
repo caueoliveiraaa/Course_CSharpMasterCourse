@@ -1,5 +1,3 @@
-using Course_CSharpMasterCourse.ToDoList;
-
 namespace Course_CSharpMasterCourse.ToDoList;
 
 
