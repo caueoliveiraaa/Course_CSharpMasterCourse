@@ -9,7 +9,7 @@ public interface ITaskManager
     /// </summary>
     /// <param name="task"> Task to be authenticated. </param>
     /// <param name="tasks"> List of existing tasks. </param>
-    /// <param name="tasks"> List of existing tasks. </param>
+    /// <param name="newTask"> New task to be processed. </param>
     void ProcessNewTask(string option, string task, string? newTask = null);
 
     /// <summary>
